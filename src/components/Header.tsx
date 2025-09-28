@@ -1,7 +1,13 @@
-import { Search, History, HelpCircle, Activity } from "lucide-react";
+import { Search, History, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const Header = () => {
@@ -9,15 +15,17 @@ export const Header = () => {
     "Search for mobiles under 20k",
     "Best laptops for gaming",
     "Wireless headphones comparison",
-    "Smart TV deals"
+    "Smart TV deals",
   ]);
 
   const handleSearchClick = () => {
     // Focus on search input if it exists
-    const searchInput = document.querySelector('input[type="search"], input[placeholder*="search"], input[placeholder*="Search"]');
+    const searchInput = document.querySelector(
+      'input[type="search"], input[placeholder*="search"], input[placeholder*="Search"]'
+    );
     if (searchInput) {
       (searchInput as HTMLElement).focus();
-      searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      searchInput.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
 
@@ -39,26 +47,28 @@ export const Header = () => {
               <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 BROWSEEASE
               </h1>
-              <p className="text-xs text-muted-foreground">AI Web Navigation Agent</p>
+              <p className="text-xs text-muted-foreground">
+                AI Web Navigation Agent
+              </p>
             </div>
           </div>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-2">
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <Button
+              variant="ghost"
+              size="sm"
               className="text-muted-foreground hover:text-foreground transition-all duration-200 hover:bg-accent"
               onClick={handleSearchClick}
             >
               <Search className="w-4 h-4 mr-2" />
               Search
             </Button>
-            
+
             <Dialog>
               <DialogTrigger asChild>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="sm"
                   className="text-muted-foreground hover:text-foreground transition-all duration-200 hover:bg-accent"
                   onClick={handleHistoryClick}
@@ -74,11 +84,13 @@ export const Header = () => {
                 <ScrollArea className="h-64 w-full">
                   <div className="space-y-2">
                     {searchHistory.map((query, index) => (
-                      <div 
+                      <div
                         key={index}
                         className="p-3 rounded-lg bg-accent/50 hover:bg-accent cursor-pointer transition-colors"
                         onClick={() => {
-                          const searchInput = document.querySelector('input[type="search"], input[placeholder*="search"], input[placeholder*="Search"]') as HTMLInputElement;
+                          const searchInput = document.querySelector(
+                            'input[type="search"], input[placeholder*="search"], input[placeholder*="Search"]'
+                          ) as HTMLInputElement;
                           if (searchInput) {
                             searchInput.value = query;
                             searchInput.focus();
@@ -92,11 +104,11 @@ export const Header = () => {
                 </ScrollArea>
               </DialogContent>
             </Dialog>
-            
+
             <Dialog>
               <DialogTrigger asChild>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="sm"
                   className="text-muted-foreground hover:text-foreground transition-all duration-200 hover:bg-accent"
                   onClick={handleHelpClick}
@@ -113,19 +125,25 @@ export const Header = () => {
                   <div>
                     <h4 className="font-semibold mb-2">Getting Started</h4>
                     <p className="text-sm text-muted-foreground">
-                      Enter your search query in natural language, like "Find laptops under $1000" or "Best smartphones for photography".
+                      Enter your search query in natural language, like "Find
+                      laptops under $1000" or "Best smartphones for
+                      photography".
                     </p>
                   </div>
                   <div>
                     <h4 className="font-semibold mb-2">Live Results</h4>
                     <p className="text-sm text-muted-foreground">
-                      Watch as our AI agent searches across multiple sources in real-time and provides you with the best matches.
+                      Watch as our AI agent searches across multiple sources in
+                      real-time and provides you with the best matches.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Smart Recommendations</h4>
+                    <h4 className="font-semibold mb-2">
+                      Smart Recommendations
+                    </h4>
                     <p className="text-sm text-muted-foreground">
-                      Get AI-powered summaries and recommendations based on your search criteria and preferences.
+                      Get AI-powered summaries and recommendations based on your
+                      search criteria and preferences.
                     </p>
                   </div>
                 </div>
@@ -134,11 +152,7 @@ export const Header = () => {
           </nav>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button variant="ghost" size="sm">
-              <Activity className="w-5 h-5" />
-            </Button>
-          </div>
+          {/* Mobile menu button removed (logo/icon) */}
         </div>
       </div>
     </header>
